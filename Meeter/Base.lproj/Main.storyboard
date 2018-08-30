@@ -29,13 +29,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yro-Yx-5fQ">
-                                <rect key="frame" x="16" y="583" width="336" height="64"/>
+                                <rect key="frame" x="16" y="652" width="375" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oik-Sd-MUM">
-                                        <rect key="frame" x="10" y="10" width="140" height="44"/>
+                                        <rect key="frame" x="10" y="10" width="80" height="44"/>
                                         <color key="backgroundColor" white="0.16417100694444445" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" priority="750" constant="140" id="X3N-Rc-RVf"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="IJT-2I-qPT"/>
                                         </constraints>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,10 +47,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9N-wu-wKC">
-                                        <rect key="frame" x="186" y="10" width="140" height="44"/>
+                                        <rect key="frame" x="285" y="10" width="80" height="44"/>
                                         <color key="backgroundColor" red="0.0" green="0.29372223984771573" blue="0.075364902248130569" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" priority="750" constant="140" id="Dlm-nF-ilk"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="nBj-N6-yh8"/>
                                         </constraints>
                                         <state key="normal" title="Start">
                                             <color key="titleColor" red="0.0" green="1" blue="0.051177963712694563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -10,10 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	var meetingCost: MeetingCost!
+
+	// MARK: Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-	}
 
+		let defaultMemberCount = 0
+		let defaultSalary = 0
+
+		// Try to get default values
+
+		meetingCost = MeetingCost(withMemberCount: defaultMemberCount, atSalary: defaultSalary)
+	}
+	
+	// MARK: Statusbar
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
 }
 
