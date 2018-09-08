@@ -148,12 +148,12 @@ private extension ViewController {
 		switch state {
 		case .start:
 			actionButton.backgroundColor = UIColor.green
-			actionButton.setTitleColor(UIColor.green, for: .normal)
-			actionButton.titleLabel?.text = "Start"
+			actionButton.setTitleColor(UIColor.white, for: .normal)
+			actionButton.setTitle("Start", for: .normal)
 		case .stop:
 			actionButton.backgroundColor = UIColor.orange
-			actionButton.setTitleColor(UIColor.orange, for: .normal)
-			actionButton.titleLabel?.text = "Stop"
+			actionButton.setTitleColor(UIColor.white, for: .normal)
+			actionButton.setTitle("Stop", for: .normal)
 		}
 	}
 
