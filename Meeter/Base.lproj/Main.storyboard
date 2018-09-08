@@ -63,6 +63,9 @@
                                         <state key="normal" title="6">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="memberCountButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="lNW-yY-ffK"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWO-Kq-cOt">
                                         <rect key="frame" x="151.66666666666666" y="97" width="72" height="20"/>
@@ -112,6 +115,9 @@
                                         <state key="normal" title="105000">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="salaryButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Frr-zc-IG0"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Annual Salary" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqk-y1-8MX">
                                         <rect key="frame" x="102.66666666666669" y="192.66666666666663" width="170" height="20"/>
@@ -143,6 +149,9 @@
                                         <state key="normal" title="-">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="memberCountMinusButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kmv-T6-4Yi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpK-Ej-IPh">
                                         <rect key="frame" x="245.66666666666663" y="33" width="64" height="64"/>
@@ -154,6 +163,9 @@
                                         <state key="normal" title="+">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="memberCountPlusButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="cqa-dj-5Hk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -194,7 +206,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9N-wu-wKC">
                                                 <rect key="frame" x="255" y="10" width="80" height="80"/>
-                                                <color key="backgroundColor" red="0.058261705179554341" green="0.19870320431472077" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" red="0.0" green="0.19607843137254902" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="cw2-JZ-ZqC"/>
                                                     <constraint firstAttribute="width" constant="80" id="dHX-wO-xXQ"/>
@@ -208,6 +220,9 @@
                                                         <integer key="value" value="40"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="rB8-xn-8NV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oik-Sd-MUM">
                                                 <rect key="frame" x="0.0" y="10" width="80" height="80"/>
@@ -225,6 +240,9 @@
                                                         <integer key="value" value="40"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="resetButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="6LA-Qm-Usp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -255,8 +273,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yro-Yx-5fQ" userLabel="mainDisplay">
                                 <rect key="frame" x="0.0" y="88" width="375" height="350"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$340.56M" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="hN6-4T-UTd" userLabel="costLabel">
-                                        <rect key="frame" x="15" y="132.33333333333334" width="345" height="86.333333333333343"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="hN6-4T-UTd" userLabel="costLabel">
+                                        <rect key="frame" x="0.0" y="128.66666666666666" width="375" height="93.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="750" constant="860" id="1Im-Gr-eb0"/>
                                             <constraint firstAttribute="width" secondItem="hN6-4T-UTd" secondAttribute="height" multiplier="280:70" id="jGH-rb-XWS"/>
@@ -265,8 +283,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34:57" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="JdL-hT-e96" userLabel="costLabel">
-                                        <rect key="frame" x="130.33333333333334" y="208.66666666666669" width="114.66666666666666" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="JdL-hT-e96" userLabel="costLabel">
+                                        <rect key="frame" x="125.33333333333331" y="212.33333333333331" width="124.66666666666669" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JdL-hT-e96" secondAttribute="height" multiplier="45:17" id="rug-sR-zhb"/>
                                         </constraints>
@@ -277,7 +295,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hN6-4T-UTd" secondAttribute="trailing" constant="15" id="3rd-P9-MNN"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hN6-4T-UTd" secondAttribute="trailing" id="3rd-P9-MNN"/>
                                     <constraint firstItem="JdL-hT-e96" firstAttribute="topMargin" secondItem="hN6-4T-UTd" secondAttribute="bottom" constant="-5" id="FsA-Ku-Qmy"/>
                                     <constraint firstItem="JdL-hT-e96" firstAttribute="height" secondItem="hN6-4T-UTd" secondAttribute="height" multiplier="0.5" id="Q9q-W1-pfU"/>
                                     <constraint firstItem="hN6-4T-UTd" firstAttribute="centerX" secondItem="yro-Yx-5fQ" secondAttribute="centerX" id="RRi-FL-kqB"/>
@@ -286,7 +304,7 @@
                                     <constraint firstItem="hN6-4T-UTd" firstAttribute="centerY" secondItem="yro-Yx-5fQ" secondAttribute="centerY" id="gUi-bb-ivz"/>
                                     <constraint firstItem="JdL-hT-e96" firstAttribute="centerX" secondItem="yro-Yx-5fQ" secondAttribute="centerX" id="jL2-aH-E8v"/>
                                     <constraint firstItem="JdL-hT-e96" firstAttribute="top" secondItem="hN6-4T-UTd" secondAttribute="bottom" constant="-10" id="lMM-iE-Vab"/>
-                                    <constraint firstItem="hN6-4T-UTd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yro-Yx-5fQ" secondAttribute="leading" constant="15" id="ny6-uA-s2q"/>
+                                    <constraint firstItem="hN6-4T-UTd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yro-Yx-5fQ" secondAttribute="leading" id="ny6-uA-s2q"/>
                                     <constraint firstItem="hN6-4T-UTd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yro-Yx-5fQ" secondAttribute="top" constant="5" id="yjv-Tm-4N0"/>
                                 </constraints>
                                 <variation key="default">
@@ -330,6 +348,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meeter" id="ZUw-0Z-As5"/>
+                    <connections>
+                        <outlet property="actionButton" destination="H9N-wu-wKC" id="xmt-IF-DZa"/>
+                        <outlet property="costLabel" destination="hN6-4T-UTd" id="L8m-uL-FCb"/>
+                        <outlet property="dollarSignLabel" destination="s3U-JX-dKn" id="hcX-kx-zKi"/>
+                        <outlet property="memberCountButton" destination="FFa-Md-Akh" id="vJr-kD-85V"/>
+                        <outlet property="memberCountLabel" destination="PWO-Kq-cOt" id="Ipd-4U-C7H"/>
+                        <outlet property="memberCountMinusButton" destination="rOL-4b-0H8" id="THU-h6-Cxd"/>
+                        <outlet property="memberCountOutline" destination="adH-kn-7Vd" id="x7d-zq-l23"/>
+                        <outlet property="memberCountPlusButton" destination="gpK-Ej-IPh" id="Gz0-hQ-gHC"/>
+                        <outlet property="resetButton" destination="oik-Sd-MUM" id="zYL-gC-jsb"/>
+                        <outlet property="salaryButton" destination="ALT-aj-CuD" id="k3b-xF-iOI"/>
+                        <outlet property="salaryButtonOutline" destination="y4j-Ya-L06" id="rZj-5I-XX8"/>
+                        <outlet property="salaryLabel" destination="zqk-y1-8MX" id="Xte-CN-ina"/>
+                        <outlet property="timeLabel" destination="JdL-hT-e96" id="6Hj-ib-rbO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

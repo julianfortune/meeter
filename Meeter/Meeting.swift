@@ -8,17 +8,17 @@
 
 import Foundation
 
-class MeetingCost {
+class Meeting {
 	
-	enum constants: Int {
-		typealias RawValue = Int
-		
-		case yearInSeconds = 31536000
+	enum constants {
+		static var secondsInAnHour = 3600
+		static var hoursInAWorkWeek = 40
+		static var workWeeksInAYear = 52
 	}
 	
 	var averageSalary: Int { didSet { updateCostPerSecond() } }
 	var numberOfMembers: Int { didSet { updateCostPerSecond() } }
-	var costPerSecond: Float!
+	var costPerSecond = 0.0
 	
 	init(withMemberCount employees: Int, atSalary salary: Int) {
 		numberOfMembers = employees
@@ -27,11 +27,12 @@ class MeetingCost {
 	}
 
 	private func updateCostPerSecond() {
-		costPerSecond = Float(numberOfMembers) * Float(averageSalary) / Float(constants.yearInSeconds.rawValue)
+		costPerSecond = Double(averageSalary) / // Divided by the number of seconds of work in a year
+			Double(constants.workWeeksInAYear) * Double(constants.hoursInAWorkWeek) * Double(constants.secondsInAnHour)
 	}
 
-	func after(timeInterval interval: Float) -> Float {
-		return 0.0
+	func totalCost(after timeInterval: Double) -> Double {
+		return timeInterval * costPerSecond
 	}
 	
 }
