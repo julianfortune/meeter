@@ -10,6 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	struct ActionButtonColor {
+		struct Background {
+			static let start = #colorLiteral(red: 0.03387554814, green: 0.1029147539, blue: 0, alpha: 1)
+			static let stop = #colorLiteral(red: 0.1959092882, green: 0.1012412079, blue: 0, alpha: 1)
+		}
+		struct Text {
+			static let start = #colorLiteral(red: 0.1657570453, green: 0.7795952691, blue: 0.1657570453, alpha: 1)
+			static let stop = #colorLiteral(red: 1, green: 0.5916797093, blue: 0.07212999132, alpha: 1)
+		}
+	}
+
+	struct ResetButtonColor {
+		struct Background {
+			static let enabled = #colorLiteral(red: 0.1400000006, green: 0.1400000006, blue: 0.1400000006, alpha: 1)
+			static let disabled = #colorLiteral(red: 0.05999999866, green: 0.05999999866, blue: 0.05999999866, alpha: 1)
+		}
+		struct Text {
+			static let enabled = UIColor.lightGray
+			static let disabled = UIColor.darkGray
+		}
+	}
+
 	enum State {
 		case running
 		case paused
@@ -19,6 +41,11 @@ class ViewController: UIViewController {
 	enum ActionState {
 		case start
 		case stop
+	}
+
+	enum ResetState {
+		case enabled
+		case disabled
 	}
 
 	private var meeting: Meeting!
@@ -55,6 +82,8 @@ class ViewController: UIViewController {
 
 		state = .stopped
 		updateInterfaceForNewState()
+		updateActionButton(for: .start)
+		updateResetButton(for: .disabled)
 	}
 	
 	// MARK: Statusbar
@@ -113,10 +142,10 @@ private extension ViewController {
 
 			// Buttons
 			resetButton.isEnabled = true
-			resetButton.backgroundColor = UIColor.darkGray
 			memberCountButton.isEnabled = false
 			salaryButton.isEnabled = false
 			updateActionButton(for: .stop)
+			updateResetButton(for: .enabled)
 		} else {
 			// Buttons
 			updateActionButton(for: .start)
@@ -137,9 +166,9 @@ private extension ViewController {
 
 				// Buttons
 				resetButton.isEnabled = false
-				resetButton.backgroundColor = UIColor.black
 				memberCountButton.isEnabled = true
 				salaryButton.isEnabled = true
+				updateResetButton(for: .disabled)
 			}
 		}
 	}
@@ -147,13 +176,24 @@ private extension ViewController {
 	func updateActionButton(for state: ActionState) {
 		switch state {
 		case .start:
-			actionButton.backgroundColor = UIColor.green
-			actionButton.setTitleColor(UIColor.white, for: .normal)
+			actionButton.backgroundColor = ActionButtonColor.Background.start
+			actionButton.setTitleColor(ActionButtonColor.Text.start, for: .normal)
 			actionButton.setTitle("Start", for: .normal)
 		case .stop:
-			actionButton.backgroundColor = UIColor.orange
-			actionButton.setTitleColor(UIColor.white, for: .normal)
-			actionButton.setTitle("Stop", for: .normal)
+			actionButton.backgroundColor = ActionButtonColor.Background.stop
+			actionButton.setTitleColor(ActionButtonColor.Text.stop, for: .normal)
+			actionButton.setTitle("Pause", for: .normal)
+		}
+	}
+
+	func updateResetButton(for state: ResetState) {
+		switch state {
+		case .enabled:
+			resetButton.backgroundColor = ResetButtonColor.Background.enabled
+			resetButton.setTitleColor(ResetButtonColor.Text.enabled, for: .normal)
+		case .disabled:
+			resetButton.backgroundColor = ResetButtonColor.Background.disabled
+			resetButton.setTitleColor(ResetButtonColor.Text.disabled, for: .normal)
 		}
 	}
 
