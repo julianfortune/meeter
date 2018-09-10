@@ -69,21 +69,27 @@ class ViewController: UIViewController {
 	@IBOutlet weak var salaryLabel: UILabel!
 	@IBOutlet weak var dollarSignLabel: UILabel!
 
+	weak var timer: Timer?
+
 	// MARK: Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let defaultMemberCount = 0
-		let defaultSalary = 0
+		let defaultMemberCount = 8
+		let defaultSalary = 85000
 
 		// Try to get default values
 
 		meeting = Meeting(withMemberCount: defaultMemberCount, atSalary: defaultSalary)
+		updateInputValues()
 
 		state = .stopped
 		updateInterfaceForNewState()
 		updateActionButton(for: .start)
 		updateResetButton(for: .disabled)
+
+		costLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 200, weight: .thin)
+		timeLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 100, weight: .ultraLight)
 	}
 	
 	// MARK: Statusbar
@@ -96,7 +102,13 @@ class ViewController: UIViewController {
 		if state == .running {
 			state = .paused
 			updateInterfaceForNewState()
+			pauseMeeting()
 		} else {
+			if state == .stopped {
+				startMeeting()
+			} else {
+				resumeMeeting()
+			}
 			// Make changes common to paused and stopped states
 			state = .running
 			updateInterfaceForNewState()
@@ -107,6 +119,7 @@ class ViewController: UIViewController {
 	@IBAction func resetButtonPressed() {
 		state = .stopped
 		updateInterfaceForNewState()
+		resetMeeting()
 	}
 
 	@IBAction func memberCountButtonPressed() {
@@ -124,6 +137,36 @@ class ViewController: UIViewController {
 }
 
 private extension ViewController {
+
+	func startMeeting() {
+		timer = Timer.scheduledTimer(timeInterval: 0.05,
+									 target: self,
+									 selector: #selector(updateCounter),
+									 userInfo: nil,
+									 repeats: true)
+		meeting.startMeeting()
+	}
+
+	func pauseMeeting() {
+		timer?.invalidate()
+		meeting.pauseMeeting()
+		updateCounter()
+	}
+
+	func resumeMeeting() {
+		timer = Timer.scheduledTimer(timeInterval: 0.05,
+									 target: self,
+									 selector: #selector(updateCounter),
+									 userInfo: nil,
+									 repeats: true)
+		meeting.resumeMeeting()
+	}
+
+	func resetMeeting() {
+		timer?.invalidate()
+		meeting.stopMeeting()
+		updateCounter()
+	}
 
 	func updateInterfaceForNewState() {
 		if state == .running {
@@ -198,33 +241,48 @@ private extension ViewController {
 	}
 
 	func updateInputValues() {
-		memberCountButton.titleLabel?.text = String(meeting.numberOfMembers)
-		salaryButton.titleLabel?.text = String(meeting.averageSalary)
+		memberCountButton.setTitle(String(meeting.numberOfMembers), for: .normal)
+		salaryButton.setTitle(String(meeting.averageSalary), for: .normal)
 	}
 
-	func updateCounter() {
-		costLabel.text = meeting.totalCost(after: 0.0).presentableCost()
-		timeLabel.text = ""
+	@objc func updateCounter() {
+		costLabel.text = meeting.presentableCost()
+		timeLabel.text = meeting.presentableTime()
 	}
 
 }
 
-private extension Double {
+private extension Meeting {
 
 	func presentableCost() -> String {
-		if self < 1000 {
-
-		} else if self < 1000000 {
-
-		} else if self < 1000000000 {
-
-		} else if self < 1000000000000 {
-
+		if totalCost < 1000 {
+			return String(format: "$%.2f",totalCost)
+		} else if totalCost < 1000000 {
+			return String(format: "$%.2fk",totalCost / 1000)
+		} else if totalCost < 1000000000 {
+			return String(format: "$%.2fM",totalCost / 1000000000)
+		} else if totalCost < 1000000000000 {
+			return String(format: "$%.2fB",totalCost / 1000000000000)
 		} else {
 			return "A lot."
 		}
+	}
 
-		return ""
+	func presentableTime() -> String {
+		let minutes = Int(timeElapsed / 60)
+		let seconds = Int(timeElapsed) - minutes * 60
+		var outputString = ":"
+		if seconds < 10 {
+			outputString = outputString + "0" + String(seconds)
+		} else {
+			outputString += String(seconds)
+		}
+		if minutes < 10 {
+			outputString = "0" + String(minutes) + outputString
+		} else {
+			outputString = "0" + String(minutes) + outputString
+		}
+		return outputString
 	}
 
 }

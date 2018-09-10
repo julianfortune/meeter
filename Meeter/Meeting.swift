@@ -19,6 +19,16 @@ class Meeting {
 	var averageSalary: Int { didSet { updateCostPerSecond() } }
 	var numberOfMembers: Int { didSet { updateCostPerSecond() } }
 	var costPerSecond = 0.0
+
+	var startTime: TimeInterval = 0
+	var timeElapsed: TimeInterval {
+		if startTime > 0 {
+			return Date().timeIntervalSinceReferenceDate - startTime
+		} else {
+			return 0
+		}
+	}
+	var timeElapsedBeforePause: TimeInterval?
 	
 	init(withMemberCount employees: Int, atSalary salary: Int) {
 		numberOfMembers = employees
@@ -27,12 +37,28 @@ class Meeting {
 	}
 
 	private func updateCostPerSecond() {
-		costPerSecond = Double(averageSalary) / // Divided by the number of seconds of work in a year
-			Double(constants.workWeeksInAYear) * Double(constants.hoursInAWorkWeek) * Double(constants.secondsInAnHour)
+		costPerSecond = Double(averageSalary) * Double(numberOfMembers) / // Divided by the number of seconds of work in a year
+			( Double(constants.workWeeksInAYear) * Double(constants.hoursInAWorkWeek) * Double(constants.secondsInAnHour) )
 	}
 
-	func totalCost(after timeInterval: Double) -> Double {
-		return timeInterval * costPerSecond
+	func startMeeting() {
+		startTime = Date().timeIntervalSinceReferenceDate
+	}
+
+	func stopMeeting() {
+		startTime = 0
+	}
+
+	func pauseMeeting() {
+		timeElapsedBeforePause = timeElapsed
+	}
+
+	func resumeMeeting() {
+		startTime = Date().timeIntervalSinceReferenceDate - timeElapsedBeforePause!
+	}
+
+	var totalCost: Double {
+		return timeElapsed * costPerSecond
 	}
 	
 }
