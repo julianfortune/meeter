@@ -75,8 +75,8 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let defaultMemberCount = 8
-		let defaultSalary = 85000
+		let defaultMemberCount = 1
+		let defaultSalary = 75000
 
 		// Try to get default values
 
@@ -260,9 +260,9 @@ private extension Meeting {
 		} else if totalCost < 1000000 {
 			return String(format: "$%.2fk",totalCost / 1000)
 		} else if totalCost < 1000000000 {
-			return String(format: "$%.2fM",totalCost / 1000000000)
+			return String(format: "$%.2fM",totalCost / 1000000)
 		} else if totalCost < 1000000000000 {
-			return String(format: "$%.2fB",totalCost / 1000000000000)
+			return String(format: "$%.2fB",totalCost / 1000000000)
 		} else {
 			return "A lot."
 		}
