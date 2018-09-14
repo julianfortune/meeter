@@ -123,15 +123,71 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func memberCountButtonPressed() {
+        let alertTitle = "Number of Members"
+        let alertMessage = "Please enter the number of members in the meeting."
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Done", style: .default) { [weak self] _ in
+            guard let response = alert.textFields?.first?.text else {
+                return
+            }
+
+            print(response)
+
+            if let newValue = Int(response) {
+                if 0 < newValue && newValue < 1000 {
+                    self?.meeting.numberOfMembers = newValue
+                    self?.updateInputValues()
+                }
+            }
+        }
+
+        alert.addAction(action)
+        alert.addTextField(configurationHandler: { textField in
+            textField.keyboardType = .numberPad
+        })
+
+        present(alert, animated: true, completion: nil)
 	}
 
 	@IBAction func memberCountMinusButtonPressed() {
+        if meeting.numberOfMembers > 1 {
+            meeting.numberOfMembers -= 1
+            updateInputValues()
+        }
 	}
 
 	@IBAction func memberCountPlusButtonPressed() {
+        if meeting.numberOfMembers < 999 {
+            meeting.numberOfMembers += 1
+            updateInputValues()
+        }
 	}
 
 	@IBAction func salaryButtonPressed() {
+        let alertTitle = "Average Annual Salary"
+        let alertMessage = "Please enter the average annual salary of a single members of the meeting."
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Done", style: .default) { [weak self] _ in
+            guard let response = alert.textFields?.first?.text else {
+                return
+            }
+
+            print(response)
+
+            if let newValue = Int(response) {
+                if 0 < newValue && newValue < 1000000 {
+                    self?.meeting.averageSalary = newValue
+                    self?.updateInputValues()
+                }
+            }
+        }
+
+        alert.addAction(action)
+        alert.addTextField(configurationHandler: { textField in
+            textField.keyboardType = .numberPad
+        })
+
+        present(alert, animated: true, completion: nil)
 	}
 
 }
