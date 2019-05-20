@@ -14,6 +14,7 @@ class Meeting {
 		static var secondsInAnHour = 3600
 		static var hoursInAWorkWeek = 40
 		static var workWeeksInAYear = 52
+		static var secondsInAYear = secondsInAnHour * hoursInAWorkWeek * workWeeksInAYear
 	}
 	
 	var averageSalary: Int { didSet { updateCostPerSecond() } }
